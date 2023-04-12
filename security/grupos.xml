@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="module_category_variables_proyectos">
+        <field name="name">Variables Proyectos</field>
+        <field name="description">Variables Proyectos</field>
+        <field name="sequence">45</field>
+    </record>
+
+    <record id="proyecto_user_reader" model="res.groups">
+        <field name="name">Lector</field>
+        <field name="comment">Grupo Lector Modulo Proyectos</field>
+        <field name="category_id" ref="module_category_variables_proyectos" />
+    </record>
+    <record id="proyecto_user_editor" model="res.groups">
+        <field name="name">Editor</field>
+        <field name="comment">Grupo Editor Modulo Proyectos</field>
+        <field name="category_id" ref="module_category_variables_proyectos" />
+    </record>
+
+    <record id="proyecto_user_group" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="comment">Grupo Usuario Modulo Proyectos</field>
+        <field name="category_id" ref="module_category_variables_proyectos" />
+        <field name="implied_ids" eval="[(4, ref('proyecto_user_reader'))]" />
+    </record>
+
+    <record id="proyecto_admin_group" model="res.groups">
+        <field name="name">Administrador</field>
+        <field name="comment">Grupo Administrador Modulo Proyectos</field>
+        <field name="category_id" ref="module_category_variables_proyectos" />
+    </record>
+
+    <record id="project_writing" model="ir.rule">
+        <field name="name"> Escribir </field>
+        <field name="model_id" ref="model_proyecto" />
+        <field name="groups" eval="[(4, ref ('proyecto_user_group'))]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="domain_force">[]</field>
+    </record>
+
+</odoo>

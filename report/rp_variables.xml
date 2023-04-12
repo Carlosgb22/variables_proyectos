@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="informe_variable_pdf" model="ir.actions.report">
+        <field name="name">Informe Proyecto PDF</field>
+
+        <field name="model">proyecto</field>
+
+        <field name="report_type">qweb-pdf</field>
+
+        <field name="report_name">variables_proyectos.report_variable_pdf</field>
+
+        <field name="report_file">variables_proyectos.report_variable_pdf</field>
+
+        <field name="binding_model_id" ref="model_proyecto" />
+
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="informe_variable_xls" model="ir.actions.report">
+        <field name="name">Informe Proyecto XLS</field>
+
+        <field name="model">proyecto</field>
+
+        <field name="report_type">xlsx</field>
+
+        <field name="report_name">variables_productos.report_variable_xls</field>
+
+        <field name="report_file">variables_productos.report_variable_xls</field>
+
+        <field name="binding_model_id" ref="model_proyecto" />
+
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_variable_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="oe_structure" style="align-items: center;" />
+                        <table class="table table-condensed">
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    <span
+                                        style="font-size: 35px; font-weight: bold;"
+                                        t-field="o.nombre" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                        <b>Categoria:</b>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span t-field="o.categoria" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                        <b>Estado:</b>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span t-field="o.estado" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                        <b>Variables:</b>
+                                    </span>
+                                </td>
+                                <td>
+                                    <br />
+                                    <br />
+                                    <t t-foreach="o.variables" t-as="variable">
+                                        <table class="table table-condensed">
+                                            <td>
+                                                <b>Nombre:</b>
+                                                <span t-field="variable.nombre" />
+                                            </td>
+                                            <td> <b>Valor:</b> <span t-field="variable.valor" />
+                                            </td>
+                                            <td> <b>Recordatorio:</b> <span t-field="variable.recordatorio" />
+                                            </td>
+                                        </table>
+                                    </t>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

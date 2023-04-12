@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem id="proyecto_root" name="Proyectos">
+		<menuitem id="proyecto_proyecto_root" name="Proyecto" action="proyecto_action" />
+		<menuitem id="proyecto_categoria_root" name="Categorias">
+			<menuitem id="proyecto_categoria_menu" name="Categoria de Proyecto" action="categoria_pro_action" />
+			<menuitem id="variable_categoria_menu" name="Categoria de Variable" action="categoria_var_action" />
+		</menuitem>
+		<menuitem id="variable_root" name="Variables" action="variable_action" />
+	</menuitem>
+</odoo>

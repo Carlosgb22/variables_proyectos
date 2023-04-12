@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Vista arbol para las variables-->
+    <record id="variable_tree" model="ir.ui.view">
+        <field name="name">variable.tree</field>
+        <field name="model">variable</field>
+        <field name="arch" type="xml">
+            <tree string="Variable" editable="top">
+                <field name="nombre" />
+                <field name="descripcion" />
+                <field name="categoria" />
+                <field name="secreto" />
+                <field name="recordatorio" />
+                <field name="__last_update" />
+            </tree>
+        </field>
+    </record>
+
+    <!--Vista formulario para las variables-->
+    <record id="variable_form" model="ir.ui.view">
+        <field name="name">variable.form</field>
+        <field name="model">variable</field>
+        <field name="arch" type="xml">
+            <form string="Variable">
+                <sheet>
+                    <div style="font-weight: bold; font-size: 24px;">
+                        <field name="nombre" />
+                    </div>
+                    <group>
+                        <group>
+                            <field name="nombre" />
+                            <field name="valor" widget="CopyClipboardChar" attrs="{'invisible': [('secreto', '=', True)]}"/>
+                            <field name="valor2" password="True" attrs="{'invisible': [('secreto', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="descripcion" />
+                            <field name="categoria"/>
+                        </group>
+                        <group>
+                            <field name="secreto" />
+                        </group>
+                        <group>
+                            <field name="recordatorio" />
+                            <field name="__last_update" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--Vista search para las variables-->
+    <record id="variable_search" model="ir.ui.view">
+        <field name="name">variable.search</field>
+        <field name="model">variable</field>
+        <field name="arch" type="xml">
+            <search string="Variable">
+                <field name="nombre" />
+                <field name="descripcion" />
+            </search>
+        </field>
+    </record>
+
+    <!--Vista kanban para las variables-->
+    <record id="variable_kanban" model="ir.ui.view">
+        <field name="name">variable.kanban</field>
+        <field name="model">variable</field>
+        <field name="arch" type="xml">
+            <kanban string="Variable">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li style="font-weight: bold; font-size: 16px;"><field name="nombre" />
+                                    </li>
+                                    <li style="font-size: 12px;"> Descripción: <field name="descripcion" />
+                                    </li>
+                                    <li style="font-size: 12px;"> Categoria: <field name="categoria" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Accion para las variables-->
+    <record id="variable_action" model="ir.actions.act_window">
+        <field name="name">Variables</field>
+        <field name="res_model">variable</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                ¡Crea tu primera Variable!
+            </p>
+        </field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+</odoo>
