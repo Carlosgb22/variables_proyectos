@@ -26,7 +26,7 @@ class Proyecto(models.Model):
         for roc in self:
             check = False
             for ric in roc.permisos:
-                if ric.usuario.id==self.env.user and not check:
+                if ric.usuario.id==self.env.user.id and not check:
                     if ric.permiso=="escritura":
                         check=True
             roc.comprobacion = check

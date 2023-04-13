@@ -22,7 +22,6 @@
         <field name="name">Usuario</field>
         <field name="comment">Grupo Usuario Modulo Proyectos</field>
         <field name="category_id" ref="module_category_variables_proyectos" />
-        <field name="implied_ids" eval="[(4, ref('proyecto_user_reader'))]" />
     </record>
 
     <record id="proyecto_admin_group" model="res.groups">
