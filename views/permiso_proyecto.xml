@@ -3,14 +3,15 @@
 
     <!-- Vista de arbol para categoria de proyecto-->
 
-    <record id="proyecto_permiso_tree" model="ir.ui.view">
-        <field name="name">proyecto.permiso.tree</field>
+    <record id="permiso_tree" model="ir.ui.view">
+        <field name="name">permiso.tree</field>
         <field name="model">proyecto.permiso</field>
         <field name="arch" type="xml">
-            <tree editable="top">
-                <field name="name"/>
+            <tree>
+                <field name="usuario"/>
                 <field name="permiso" />
             </tree>
         </field>
     </record>
+
 </odoo>

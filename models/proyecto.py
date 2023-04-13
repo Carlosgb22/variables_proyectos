@@ -20,3 +20,13 @@ class Proyecto(models.Model):
     ], string = "Estado", default = "desarrollo", required = True, tracking=True, ondelete='set default')
     permisos = fields.Many2many('proyecto.permiso', string='Usuarios', tracking=True)
     variables = fields.Many2many("variable", string = "Variables", tracking=True, groups="variables_proyectos.proyecto_user_group")
+    comprobacion=fields.Boolean(string="Comprobacion", tracking=True, compute='check_edit')
+    @api.depends('permisos', 'permisos.permiso', 'permisos.usuario')
+    def check_edit(self):
+        for roc in self:
+            check = False
+            for ric in roc.permisos:
+                if ric.usuario.id==self.env.user and not check:
+                    if ric.permiso=="escritura":
+                        check=True
+            roc.comprobacion = check

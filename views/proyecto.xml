@@ -30,12 +30,12 @@
                     </div>
                     <group>
                         <group>
-                            <!--  attrs="{'readonly':[(1,'=',1)]}" -->
                             <field name="categoria" />
                         </group>
                         <group>
                             <field name="estado" />
                             <field name="permisos"/>
+                            <field name="comprobacion"/>
                         </group>
                         <group>
                             <field name="variables" />
