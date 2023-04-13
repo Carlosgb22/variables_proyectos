@@ -6,6 +6,6 @@
 			<menuitem id="proyecto_categoria_menu" name="Categoria de Proyecto" action="categoria_pro_action" />
 			<menuitem id="variable_categoria_menu" name="Categoria de Variable" action="categoria_var_action" />
 		</menuitem>
-		<menuitem id="variable_root" name="Variables" action="variable_action" />
+		<menuitem id="variable_root" name="Variables" action="variable_action" group='Modulo-Odoo.proyecto_admin_group'/>
 	</menuitem>
 </odoo>

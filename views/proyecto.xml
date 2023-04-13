@@ -7,7 +7,7 @@
         <field name="name">proyecto.tree</field>
         <field name="model">proyecto</field>
         <field name="arch" type="xml">
-            <tree string="Proyecto" editable="top">
+            <tree string="Proyecto">
                 <field name="nombre" />
                 <field name="categoria" />
                 <field name="estado" />
@@ -26,19 +26,20 @@
             <form string="Proyecto">
                 <sheet>
                     <div style="font-weight: bold; font-size: 24px;">
-                        <field name="nombre" />
+                        <field name="nombre" readonly="0" attrs="{'readonly':[('comprobacion_grupo','=',True)]}"/>
                     </div>
                     <group>
                         <group>
-                            <field name="categoria" />
+                            <field name="categoria" readonly="0" attrs="{'readonly':[('comprobacion_grupo','=',True)]}" />
                         </group>
                         <group>
-                            <field name="estado" />
-                            <field name="permisos"/>
-                            <field name="comprobacion"/>
+                            <field name="estado" readonly="0" attrs="{'readonly':[('comprobacion_grupo','=',True)]}"/>
+                            <field name="permisos" readonly="0" attrs="{'readonly':[('comprobacion_grupo','=',True)]}"/>
+                            <field name="comprobacion" invisible="True"/>
+                            <field name="comprobacion_grupo" invisible="True" />
                         </group>
                         <group>
-                            <field name="variables" />
+                            <field name="variables" readonly="0" attrs="{'readonly':[('comprobacion','=',False),('comprobacion_grupo','=',True)]}" />
                         </group>
                     </group>
                 </sheet>
