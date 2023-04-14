@@ -2,7 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_proyecto_categoria,access.proyecto.categoria,model_proyecto_categoria,proyecto_user_group,1,0,0,0
 access_proyecto,access.proyecto,model_proyecto,proyecto_user_group,1,1,0,0
 access_proyecto_variable,access.proyecto.variable,model_variable_categoria,proyecto_user_group,1,0,0,0
-access_variable,access.variable,model_variable,proyecto_user_group,1,0,0,0
+access_variable,access.variable,model_variable,proyecto_user_group,1,1,1,0
 access_variable_xls,access.variable_xls,model_report_variables_productos_report_variable_xls,proyecto_user_group,1,0,0,0
 
 access_proyecto_categoria_admin,access.proyecto.categoria_admin,model_proyecto_categoria,proyecto_admin_group,1,1,1,1

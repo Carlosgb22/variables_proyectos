@@ -16,13 +16,10 @@ class ProyectoCategoria(models.Model):
     def _get_default_color(self):
         return randint(1, 11)
 
-    #Metodo que compueba que no existan dos nombres de categoria de proyecto iguales
-    @api.constrains('nombre')
-    def comprobar_nombre_unico(self):
-        if self.nombre and self.nombre != '':
-            categorias = self.env['proyecto.categoria'].search([('nombre','=',self.nombre)])
-        if len(categorias) > 1:
-            raise ValidationError('Ya existen categorias con el nombre %s'%(self.nombre))
+    #Metodo para comprobar que no existan 2 categorias de variable con el mismo nombre
+    _sql_constraints=[
+        ('name_uniq', 'unique (nombre)', "Ya existe una categoría con ese nombre")
+    ]
 
     #Campos del modelo
     nombre = fields.Char(string="Nombre", required=True)

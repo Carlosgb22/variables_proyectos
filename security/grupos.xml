@@ -7,17 +7,6 @@
         <field name="sequence">45</field>
     </record>
 
-    <record id="proyecto_user_reader" model="res.groups">
-        <field name="name">Lector</field>
-        <field name="comment">Grupo Lector Modulo Proyectos</field>
-        <field name="category_id" ref="module_category_Modulo-Odoo" />
-    </record>
-    <record id="proyecto_user_editor" model="res.groups">
-        <field name="name">Editor</field>
-        <field name="comment">Grupo Editor Modulo Proyectos</field>
-        <field name="category_id" ref="module_category_Modulo-Odoo" />
-    </record>
-
     <record id="proyecto_user_group" model="res.groups">
         <field name="name">Usuario</field>
         <field name="comment">Grupo Usuario Modulo Proyectos</field>
@@ -30,15 +19,14 @@
         <field name="category_id" ref="module_category_Modulo-Odoo" />
     </record>
 
-    <record id="project_writing" model="ir.rule">
-        <field name="name"> Escribir </field>
+    <record id="own_project" model="ir.rule">
+        <field name="name"> Ver Proyecto</field>
         <field name="model_id" ref="model_proyecto" />
         <field name="groups" eval="[(4, ref ('proyecto_user_group'))]" />
         <field name="perm_read" eval="True" />
         <field name="perm_write" eval="False" />
         <field name="perm_create" eval="False" />
         <field name="perm_unlink" eval="False" />
-        <field name="domain_force">[]</field>
+        <field name="domain_force">[('permisos.usuario.id', '=', user.id)]</field>
     </record>
-
 </odoo>

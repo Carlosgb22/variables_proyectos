@@ -17,12 +17,9 @@ class VariableCategoria(models.Model):
         return randint(1, 11)
 
     #Metodo para comprobar que no existan 2 categorias de variable con el mismo nombre
-    @api.constrains('nombre')
-    def comprobar_nombre_unico(self):
-        if self.nombre and self.nombre != '':
-            categorias = self.env['variable.categoria'].search([('nombre','=',self.nombre)])
-        if len(categorias) > 1:
-            raise ValidationError('Ya existen categorias con el nombre %s'%(self.nombre))
+    _sql_constraints=[
+        ('name_uniq', 'unique (nombre)', "Ya existe una categoría con ese nombre")
+    ]
 
     #Campos del modelo
     nombre = fields.Char(string="Nombre", required=True)

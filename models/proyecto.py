@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 class Proyecto(models.Model):
     #Nombre del modelo
@@ -41,3 +42,8 @@ class Proyecto(models.Model):
                     if ric.permiso=="escritura":
                         check=True
             roc.comprobacion = check
+
+    #Metodo para comprobar que no existan 2 categorias de variable con el mismo nombre
+    _sql_constraints=[
+        ('name_uniq', 'unique (nombre)', "Ya existe una categoría con ese nombre")
+    ]
